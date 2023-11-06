@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -33,6 +34,11 @@ ALLOWED_HOSTS = []
 CUSTOM_APPS = [
     "frontend.apps.FrontendConfig",
 ]
+
+THIRD_PARTY_APPS = [
+    "webpack_loader",
+]
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -40,7 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-] + CUSTOM_APPS
+] + THIRD_PARTY_APPS + CUSTOM_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -124,3 +130,10 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+WEBPACK_LOADER = {
+  "DEFAULT": {
+    "BUNDLE_DIR_NAME": "frontend/",
+    "STATS_FILE": os.path.join(BASE_DIR, "webpack-stats.json")
+  }
+}
