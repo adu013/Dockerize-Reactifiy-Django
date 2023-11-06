@@ -16,3 +16,9 @@ db.sqlite3
 
 # Mac Files
 .DS_Store
+
+# Web Packs
+app/webpack-stats.json
+
+# Frontend Static : As this is build every-time
+app/frontend/static
